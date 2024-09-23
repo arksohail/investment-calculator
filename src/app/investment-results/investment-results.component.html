@@ -1,4 +1,4 @@
-@if(investments()) {
+@if(investments) {
   <table>
     <thead>
       <tr>
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (investment of investments(); track $index) {
+      @for (investment of investments; track $index) {
         <tr>
           <td>{{investment.year}}</td>
           <td>{{investment.valueEndOfYear | currency: 'USD'}}</td>
