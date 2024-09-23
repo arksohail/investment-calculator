@@ -1,26 +1,26 @@
-@if(investments) {
-  <table>
-    <thead>
-      <tr>
-        <th>Year</th>
-        <th>Investment Value</th>
-        <th>Interest (Year)</th>
-        <th>Total Interest</th>
-        <th>Invested Capital</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (investment of investments; track $index) {
-        <tr>
-          <td>{{investment.year}}</td>
-          <td>{{investment.valueEndOfYear | currency: 'USD'}}</td>
-          <td>{{investment.interest | currency: 'USD'}}</td>
-          <td>{{investment.totalInterest | currency: 'USD'}}</td>
-          <td>{{investment.totalAmountInvested | currency: 'USD'}}</td>
-        </tr>
-      }
-    </tbody>
-  </table>
+@if(results()) {
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Investment Value</th>
+      <th>Interest (Year)</th>
+      <th>Total Interest</th>
+      <th>Invested Capital</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (result of results(); track $index) {
+    <tr>
+      <td>{{result.year}}</td>
+      <td>{{result.valueEndOfYear | currency: 'USD'}}</td>
+      <td>{{result.interest | currency: 'USD'}}</td>
+      <td>{{result.totalInterest | currency: 'USD'}}</td>
+      <td>{{result.totalAmountInvested | currency: 'USD'}}</td>
+    </tr>
+    }
+  </tbody>
+</table>
 } @else {
-  <p class="center">Please Enter Some Value and Click on "Calculate"</p>
+<p class="center">Please Enter Some Value and Click on "Calculate"</p>
 }

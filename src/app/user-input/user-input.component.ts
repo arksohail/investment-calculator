@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserInputModel } from '../model/user-input-model.model';
 
@@ -10,21 +10,29 @@ import { UserInputModel } from '../model/user-input-model.model';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  @Output() calculate = new EventEmitter<UserInputModel>()
+  calculate = output<UserInputModel>()
 
-  initialInvestment: string = "0";
-  annualInvestment: string = "0";
-  expectedReturn: string = "5";
-  duration: string = "10";
+  initialInvestment = signal<string | number>("0");
+  annualInvestment = signal<string | number>("0");
+  expectedReturn = signal<string | number>("5");
+  duration = signal<string | number>("10");
 
 
   onSubmit() {
     this.calculate.emit(new UserInputModel({
-      initialInvestment: +this.initialInvestment,
-      annualInvestment: +this.annualInvestment,
-      expectedReturn: +this.expectedReturn,
-      duration: +this.duration,
+      initialInvestment: +this.initialInvestment(),
+      annualInvestment: +this.annualInvestment(),
+      expectedReturn: +this.expectedReturn(),
+      duration: +this.duration(),
     }));
+    this.resetForm();
+  }
+
+  resetForm() {
+    this.initialInvestment.set("0");
+    this.annualInvestment.set("0");
+    this.expectedReturn.set("5");
+    this.duration.set("10");
   }
 
 }
