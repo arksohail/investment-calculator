@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import type { AnnualData } from './model/user-input-model.model';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
+  standalone: false,
+  templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent {
+
+  resultsData = signal<AnnualData[] | undefined>(undefined);
+
+}
