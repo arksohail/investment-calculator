@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { AnnualData } from '../model/user-input-model.model';
 import { CurrencyPipe } from '@angular/common';
 
@@ -10,8 +10,9 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent {
-  @Input() investments!: AnnualData[];
+  // @Input() investments!: AnnualData[];
 
+  investments = input<AnnualData[]>();
 
 
 }
